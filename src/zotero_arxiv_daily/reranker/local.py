@@ -1,8 +1,9 @@
-from .base import BaseReranker, register_reranker
 import logging
 import warnings
 import numpy as np
 from loguru import logger
+
+from .base import BaseReranker, register_reranker
 @register_reranker("local")
 class LocalReranker(BaseReranker):
     def get_similarity_score(self, s1: list[str], s2: list[str]) -> np.ndarray:
