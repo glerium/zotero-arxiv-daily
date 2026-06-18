@@ -30,6 +30,6 @@ class LocalReranker(BaseReranker):
             s2_feature = encoder.encode(s2,**encode_kwargs,show_progress_bar=True)
             sim = encoder.similarity(s1_feature, s2_feature)
             return sim.numpy()
-        except (ImportError, OSError, RuntimeError, ValueError) as e:
+        except (ImportError, OSError, RuntimeError) as e:
             logger.warning(f"Local reranker failed; falling back to zero similarity scores: {e}")
             return np.zeros((len(s1), len(s2)))

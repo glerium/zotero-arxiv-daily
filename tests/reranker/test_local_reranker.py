@@ -2,6 +2,7 @@
 
 import numpy as np
 import pytest
+import sentence_transformers
 
 from zotero_arxiv_daily.reranker.local import LocalReranker
 
@@ -14,8 +15,6 @@ def test_local_reranker(config):
 
 
 def test_local_reranker_fallback_on_model_error(config, monkeypatch):
-    import sentence_transformers
-
     def _raise(*args, **kwargs):
         raise OSError("mock model download failure")
 
